@@ -8,8 +8,9 @@ URL:            http://sourceforge.net/projects/ocurl
 Source0:        http://downloads.sourceforge.net/ocurl/ocurl-%{version}.tgz
 Requires:       ocaml
 BuildRequires:  ocaml >= 3.10.0
-BuildRequires:  findlib
+BuildRequires:  ocaml-findlib
 BuildRequires:  curl-devel >= 7.9.8
+BuildRequires:  ncurses-devel
 BuildRequires:  gawk
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
 
