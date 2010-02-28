@@ -1,6 +1,6 @@
 Name:           ocaml-curl
 Version:        0.5.1
-Release:        %mkrel 2
+Release:        %mkrel 3
 Summary:        OCaml Curl library (ocurl)
 Group:          Development/Other
 License:        MIT
@@ -21,6 +21,7 @@ programming language Ocaml to the networking library libcurl.
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Other
+Requires:       curl-devel
 Requires:       %{name} = %{version}-%{release}
 
 %description    devel
