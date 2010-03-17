@@ -1,6 +1,6 @@
 Name:           ocaml-curl
-Version:        0.5.1
-Release:        %mkrel 3
+Version:        0.5.2
+Release:        %mkrel 1
 Summary:        OCaml Curl library (ocurl)
 Group:          Development/Other
 License:        MIT
