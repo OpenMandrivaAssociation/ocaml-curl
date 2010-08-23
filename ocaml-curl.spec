@@ -1,11 +1,12 @@
 Name:           ocaml-curl
 Version:        0.5.3
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        OCaml Curl library (ocurl)
 Group:          Development/Other
 License:        MIT
 URL:            http://sourceforge.net/projects/ocurl
 Source0:        http://downloads.sourceforge.net/ocurl/ocurl-%{version}.tgz
+Patch0:         Makefile.in-dllib.patch
 Requires:       ocaml
 BuildRequires:  ocaml >= 3.10.0
 BuildRequires:  ocaml-findlib
@@ -30,6 +31,7 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n ocurl
+%patch0 -p0
 
 # Files in the archive have spurious +x mode.
 find -type f | xargs chmod 0644
@@ -58,14 +60,15 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc COPYING
-%{_libdir}/ocaml/curl
-%exclude %{_libdir}/ocaml/curl/*.a
-%exclude %{_libdir}/ocaml/curl/*.cmxa
-%exclude %{_libdir}/ocaml/curl/*.mli
+%dir %{_libdir}/ocaml/curl
+%{_libdir}/ocaml/curl/META
+%{_libdir}/ocaml/curl/*.cmi
+%{_libdir}/ocaml/curl/*.cma
+%{_libdir}/ocaml/stublibs/*.so*
 
 %files devel
 %defattr(-,root,root,-)
-%doc examples/*
+%doc examples/
 %{_libdir}/ocaml/curl/*.a
 %{_libdir}/ocaml/curl/*.cmxa
 %{_libdir}/ocaml/curl/*.mli
