@@ -1,6 +1,6 @@
 Name:           ocaml-curl
 Version:        0.5.3
-Release:        %mkrel 2
+Release:        %mkrel 3
 Summary:        OCaml Curl library (ocurl)
 Group:          Development/Other
 License:        MIT
@@ -38,7 +38,7 @@ find -type f | xargs chmod 0644
 chmod 0755 configure install-sh
 
 %build
-%configure --libdir=%{_libdir} --with-findlib
+%configure2_5x --libdir=%{_libdir} --with-findlib
 make all
 
 %install
