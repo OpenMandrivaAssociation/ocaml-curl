@@ -1,0 +1,56 @@
+--- Makefile.in.orig	2010-08-23 14:33:13.000000000 +0200
++++ Makefile.in	2010-08-23 15:59:02.000000000 +0200
+@@ -29,11 +29,12 @@
+ 
+ CURLFLAGS	= -ccopt @CURLFLAGS@
+ CURLCLIBS	= -cclib -lcurl-helper -cclib "@CURLLIBS@"
++CURLDLLIBS	= -dllib -lcurl-helper
+ 
+ ifeq (@OCAMLBEST@,opt)
+-TARGETS		= curl.cma curl.cmxa libcurl-helper.a
++TARGETS		= curl.cma curl.cmxa libcurl-helper.a dllcurl-helper.so
+ else
+-TARGETS		= curl.cma libcurl-helper.a
++TARGETS		= curl.cma libcurl-helper.a dllcurl-helper.so
+ endif
+ 
+ all:
+@@ -46,7 +47,7 @@
+ 		(cd examples; $(MAKE))
+ 
+ curl.cma:	$(CURLBCOBJS) libcurl-helper.a
+-		$(OCBYTE) -custom -a $(FLAGS) $(CURLFLAGS) -o $@ $(CURLBCOBJS) $(CURLCLIBS)
++		$(OCBYTE) -custom -a $(FLAGS) $(CURLFLAGS) -o $@ $(CURLBCOBJS) $(CURLCLIBS) $(CURLDLLIBS)
+ 
+ curl.cmxa:	$(CURLOBJS) libcurl-helper.a
+ 		$(OCOPT) -a $(FLAGS) $(CURLFLAGS) $(LIBS) $(CURLOBJS) -o $@ $(CURLCLIBS)
+@@ -60,17 +61,16 @@
+ .ml.cmo:
+ 		$(OCBYTE) -c $(FLAGS) $< -o $@
+ 
+-libcurl-helper.a:	$(CURLHELPEROBJS)
+-		ar crus libcurl-helper.a $(CURLHELPEROBJS)
+-		ranlib libcurl-helper.a
++libcurl-helper.a dllcurl-helper.so:	$(CURLHELPEROBJS)
++	ocamlmklib -oc curl-helper $(CURLHELPEROBJS) -lcurl
+ 
+ .c.o:
+-		$(CC) -c -Wall $(CFLAGS) $(CAMLINCDIR) $< -o $@
++		$(OCBYTE) -c -ccopt "$(CFLAGS)" $<
+ 
+ install:
+ ifeq ($(FINDLIB),ocamlfind)
+ 		ocamlfind install curl META $(wildcard *.cmi) \
+-			 $(wildcard *.a) $(wildcard *.cma) $(wildcard *.cmxa)
++			 $(wildcard *.so) $(wildcard *.a) $(wildcard *.cma) $(wildcard *.cmxa)
+ else
+ 		mkdir -p $(INSTALLDIR)
+ 		$(INSTALLDATA) curl.cma $(INSTALLDIR)
+@@ -79,6 +79,7 @@
+ endif
+ 		$(INSTALLDATA) curl.mli curl.cmi $(INSTALLDIR)
+ 		$(INSTALLDATA) curl.a libcurl-helper.a $(INSTALLDIR)
++		$(INSTALL) -m 755 dllcurl-helper.so $(INSTALLDIR)
+ endif
+ 
+ 
