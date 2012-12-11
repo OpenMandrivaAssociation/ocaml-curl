@@ -73,3 +73,43 @@ rm -rf %{buildroot}
 %{_libdir}/ocaml/curl/*.cmxa
 %{_libdir}/ocaml/curl/*.mli
 
+
+
+%changelog
+* Wed May 09 2012 Crispin Boylan <crisb@mandriva.org> 0.5.3-4
++ Revision: 797740
+- Rebuild
+
+* Thu Oct 07 2010 Funda Wang <fwang@mandriva.org> 0.5.3-3mdv2011.0
++ Revision: 583990
+- rebuild
+
+* Mon Aug 23 2010 Florent Monnier <blue_prawn@mandriva.org> 0.5.3-2mdv2011.0
++ Revision: 572420
+- fixed the patch
+- patched to compile the .so file
+
+* Wed Apr 07 2010 Florent Monnier <blue_prawn@mandriva.org> 0.5.3-1mdv2010.1
++ Revision: 532793
+- updated to version 0.5.3
+
+* Wed Mar 17 2010 Florent Monnier <blue_prawn@mandriva.org> 0.5.2-1mdv2010.1
++ Revision: 522776
+- update to new version 0.5.2
+
+* Sun Feb 28 2010 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.1-3mdv2010.1
++ Revision: 512689
+- devel package requires curl-devel
+
+* Sat Jun 27 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.1-2mdv2010.0
++ Revision: 389932
+- rebuild
+
+* Thu Jun 11 2009 Florent Monnier <blue_prawn@mandriva.org> 0.5.1-1mdv2010.0
++ Revision: 385091
+- updated version
+
+* Wed Dec 24 2008 Guillaume Rousse <guillomovitch@mandriva.org> 0.5.0-1mdv2009.1
++ Revision: 318154
+- import ocaml-curl
+
