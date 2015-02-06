@@ -1,6 +1,6 @@
 Name:           ocaml-curl
 Version:        0.5.3
-Release:        5
+Release:        6
 Summary:        OCaml Curl library (ocurl)
 Group:          Development/Other
 License:        MIT
