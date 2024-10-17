@@ -4,7 +4,7 @@ Release:        6
 Summary:        OCaml Curl library (ocurl)
 Group:          Development/Other
 License:        MIT
-URL:            http://sourceforge.net/projects/ocurl
+URL:            https://sourceforge.net/projects/ocurl
 Source0:        http://downloads.sourceforge.net/ocurl/ocurl-%{version}.tgz
 Patch0:         Makefile.in-dllib.patch
 Requires:       ocaml
