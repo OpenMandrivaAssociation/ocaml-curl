@@ -8,6 +8,11 @@ URL:            https://sourceforge.net/projects/ocurl
 Source0:        http://downloads.sourceforge.net/ocurl/ocurl-%{version}.tgz
 Patch0:         Makefile.in-dllib.patch
 Requires:       ocaml
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  ocaml >= 3.10.0
 BuildRequires:  ocaml-findlib
 BuildRequires:  curl-devel >= 7.9.8
